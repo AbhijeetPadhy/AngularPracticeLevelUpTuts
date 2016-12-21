@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		<title>{{var}}</title>
+		<script src="angular.min.js">
+
+		</script>
+	</head>
+	<body>
+		<input type="text" ng-model="search" name="name" value="">
+		<span ng-init="list2=[{name:'Abhijeet',age:23},{name:'Abhisekh',age:28},
+								{name:'Shaunak',age:27},{name:'Bhagu',age:24},
+								{name:'Abhisekh Padhy',age:28},
+								{name:'Abhisekh Mishra',age:28}]">
+		</span>
+		<table border="1">
+			<tr>
+				<th>
+					Name
+				</th>
+				<th>
+					Age
+				</th>
+			</tr>
+			<tr ng-repeat="item in list2 | filter:search">
+				<td>
+					{{item.name}}
+				</td>
+				<td>
+					{{item.age}}
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+
+<!--
+	filter is used for search capabilities
+-->

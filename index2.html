@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		<title>{{var}}</title>
+		<script src="angular.min.js">
+
+		</script>
+	</head>
+	<body ng-init=" var='Angular JS Variable1'; var2='Angular JS Variable2'; list=['one','two','three','four'] ">
+		{{var}}<br>
+		{{var2}}
+		<ul>
+			<li ng-repeat="item in list">{{item}}</li>
+		</ul>
+		<span ng-init="list2=[{name:'Abhijeet',age:23},{name:'Abhisekh',age:28}]"></span>
+		<table border="1">
+			<tr>
+				<th>
+					Name
+				</th>
+				<th>
+					Age
+				</th>
+			</tr>
+			<tr ng-repeat="item in list2">
+				<td>
+					{{item.name}}
+				</td>
+				<td>
+					{{item.age}}
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+
+<!--
+	ng-init is used to declare varaibles and initialise them
+	ng-init can have multiple declarations separated by semi colon
+	ng-init can have lists, key-value pairs as objects, simple values
+	A variable declared using ng-model or ng-init is global(perhaps)
+	ng-repeat is used to iterate over a list of items, it is placed in the tag
+		which is to be repeated
+-->

@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="directoryApp">
+	<head>
+		<title>Angular JS</title>
+		<script src="angular.min.js"></script>
+		<script src="directory9.js"></script>
+		<style media="screen">
+			.over-thirty{
+				background: red;
+				color: white;
+			}
+			.under-thirty{
+				background: blue;
+				color: white;
+			}
+			.hidden{
+				display:none;
+			}
+		</style>
+	</head>
+	<body ng-controller="directoryController as dirList">
+		<input type="text" ng-model="search" name="name" value="">
+		<ul ng-class="{'hidden' : !dirList.toggle}">
+			<li ng-repeat="item in dirList.list | filter:search "
+			ng-class="item.age>30? 'over-thirty':'under-thirty'">
+				{{item.name | uppercase}} <em>{{item.age | currency:"&#x20b9":2}}</em>
+			</li>
+		</ul>
+		<button ng-if="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+		<button ng-if="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+		<form ng-submit="dirList.addPerson()">
+			<input type="text" ng-model="dirList.name" value="" placeholder="Name">
+			<input type="number" ng-model="dirList.age" value="" placeholder="Age">
+			<input type="submit" value="submit">
+		</form>
+	</body>
+</html>
+
+<!--
+	Use of
+		* ng-if
+		* ng-show
+		* ng-hide
+-->

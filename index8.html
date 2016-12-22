@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="directoryApp">
+	<head>
+		<title>Angular JS</title>
+		<script src="angular.min.js"></script>
+		<script src="directory8.js"></script>
+		<style media="screen">
+			.over-thirty{
+				background: red;
+				color: white;
+			}
+			.under-thirty{
+				background: blue;
+				color: white;
+			}
+			.hidden{
+				display:none;
+			}
+		</style>
+	</head>
+	<body ng-controller="directoryController as dirList">
+		<input type="text" ng-model="search" name="name" value="">
+		<ul ng-class=" {'hidden' : !dirList.toggle || !search} ">
+			<li ng-repeat="item in dirList.list | filter:search "
+			ng-class="item.age>30?'over-thirty':'under-thirty'">
+				{{item.name}} <em>{{item.age}}</em>
+			</li>
+		</ul>
+		<button type="button" ng-click="dirList.swapButton(); dirList.text = dirList.toggle" name="button">{{dirList.butonText}}</button>
+		<form ng-submit="dirList.addPerson()">
+			<input type="text" ng-model="dirList.name" value="" placeholder="Name">
+			<input type="number" ng-model="dirList.age" value="" placeholder="Age">
+			<input type="submit" value="submit">
+		</form>
+		{{dirList.text}}
+	</body>
+</html>
+
+<!--
+	An alternative to calling swapButton() was to directly write the statement
+	 	ng-click="dirList.toggle = true"
+		But it won't change the buttonText neither would it hide it once shown
+
+	Also note how multiple statements are being used in line 29 in side ng-click
+		separated by semi colons
+-->

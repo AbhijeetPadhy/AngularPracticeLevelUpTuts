@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app="directoryApp">
+	<head>
+		<title>Angular JS</title>
+		<script src="angular.min.js"></script>
+		<script src="directory7.js"></script>
+	</head>
+	<body ng-controller="directoryController as dirList">
+		<input type="text" ng-model="search" name="name" value="">
+		<ul>
+			<li ng-repeat="item in dirList.list | filter:search | orderBy:'age' | limitTo:4 "
+			class="person-{{item.name | lowercase}}">
+				{{item.name | uppercase}} <em>{{item.age | currency:"&#x20b9":2}}</em>
+			</li>
+		</ul>
+		<form ng-submit="dirList.addPerson()">
+			<input type="text" ng-model="dirList.name" value="" placeholder="Name">
+			<input type="number" ng-model="dirList.age" value="" placeholder="Age">
+			<input type="submit" value="submit">
+		</form>
+	</body>
+</html>
+
+<!--
+	controller as is used to remove the usage of $scope
+	this is a best practice since if we use multiple controllers, we can very well
+		know which controllers are being reffered to
+-->

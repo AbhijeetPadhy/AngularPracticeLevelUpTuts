@@ -1,0 +1,15 @@
+<h1>Homepage</h1>
+	<input type="text" ng-model="search" name="name" value="">
+	<ul ng-if="dirList.toggle">
+		<li ng-repeat="item in dirList.list | filter:search ">
+			<img ng-src="{{item.img}}" width=100px/>
+			<span>{{item.name | uppercase}} <em>{{item.age | currency:"&#x20b9":2}}</em></span>
+		</li>
+	</ul>
+	<button ng-if="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+	<button ng-if="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+	<form ng-submit="dirList.addPerson()">
+		<input type="text" ng-model="dirList.name" value="" placeholder="Name">
+		<input type="number" ng-model="dirList.age" value="" placeholder="Age">
+		<input type="submit" value="submit">
+	</form>

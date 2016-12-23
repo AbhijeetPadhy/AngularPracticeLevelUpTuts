@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="directoryApp">
+	<head>
+		<title>Angular JS</title>
+		<script src="angular.min.js"></script>
+		<script src="directory11.js"></script>
+		<style media="screen">
+			ul{
+				list-style: none;
+			}
+			li{
+				display: flex;
+				margin-bottom: 10px;
+			}
+			li span{
+				display: inline-block;
+				line-height: 50px;
+			}
+			li img{
+				margin-right: 10px;
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
+			}
+			.hidden{
+				display:none;
+			}
+			#rect5878{
+				fill : blue !important;
+			}
+		</style>
+	</head>
+	<body ng-controller="directoryController as dirList">
+		<input type="text" ng-model="search" name="name" value="">
+		<ul ng-class="{'hidden' : !dirList.toggle}">
+			<li ng-repeat="item in dirList.list | filter:search " ng-include="'person.html'"></li>
+		</ul>
+		<button ng-if="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+		<button ng-if="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+		<form ng-submit="dirList.addPerson()">
+			<input type="text" ng-model="dirList.name" value="" placeholder="Name">
+			<input type="number" ng-model="dirList.age" value="" placeholder="Age">
+			<input type="submit" value="submit">
+		</form>
+	</body>
+</html>
+
+<!--
+	Use of
+		* ng-include
+	Using ng-include using tags like <ng-include> sometimes gives css problems,
+		better use it as an attribute as shown. But the <ng-include> tag is itself
+		used in person.html, so we had to use !important in #rect5878 id to style it.
+	To use such file:
+		open terminal in the location of the file index11.html
+		type in terminal: python -m SimpleHTTPServer
+		in the browser type: localhost:8000/index11.html
+		the webpage then opens properly
+-->

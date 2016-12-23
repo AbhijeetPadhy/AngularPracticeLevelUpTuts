@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app="directoryApp">
+	<head>
+		<title>Angular JS</title>
+		<script src="angular.min.js"></script>
+		<script src="angular-animate.js"></script>
+		<script src="directory12.js"></script>
+		<style media="screen">
+			ul{
+				list-style: none;
+			}
+			li{
+				display: flex;
+				margin-bottom: 10px;
+			}
+			li span{
+				display: inline-block;
+				line-height: 50px;
+			}
+			li img{
+				margin-right: 10px;
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
+			}
+			.hidden{
+				display:none;
+			}
+			#rect5878{
+				fill : blue !important;
+			}
+		</style>
+	</head>
+	<body ng-controller="directoryController as dirList">
+		<input type="text" ng-model="search" name="name" value="">
+		<ul ng-class="{'hidden' : !dirList.toggle}">
+			<li ng-repeat="item in dirList.list | filter:search " ng-include="'person.html'"></li>
+		</ul>
+		<button ng-if="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+		<button ng-if="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+		<form ng-submit="dirList.addPerson()">
+			<input type="text" ng-model="dirList.name" value="" placeholder="Name">
+			<input type="number" ng-model="dirList.age" value="" placeholder="Age">
+			<input type="submit" value="submit">
+		</form>
+	</body>
+</html>
+
+<!--
+	Installing
+		* ng-animate
+	Don't forget to add it to the module section in directory12.js
+-->

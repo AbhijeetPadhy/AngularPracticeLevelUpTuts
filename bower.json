@@ -1,0 +1,17 @@
+{
+  "name": "Angular Code",
+  "homepage": "https://github.com/AbhijeetPadhy/AngularPracticeLevelUpTuts",
+  "authors": [
+    "Abhijeet Padhy <abhijeet.padhy@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
